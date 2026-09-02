@@ -1,0 +1,19 @@
+{
+  "orders": {
+    "description": "Contains order lifecycle information.",
+    "primary_key": "order_id",
+    "foreign_keys": {
+      "customer_id": "customers.customer_id"
+    },
+    "business_meaning": "Each row represents one order."
+  }
+}{
+  "orders": {
+    "description": "Contains order lifecycle information.",
+    "primary_key": "order_id",
+    "foreign_keys": {
+      "customer_id": "customers.customer_id"
+    },
+    "business_meaning": "Each row represents one order."
+  }
+}

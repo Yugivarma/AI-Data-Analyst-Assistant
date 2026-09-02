@@ -17,6 +17,13 @@ __pycache__/
 # Database
 *.db
 
+# Project datasets
+datasets/
+*.zip
+
+# Generated data quality reports
+reports/
+
 # OS Files
 .DS_Store
 Thumbs.db
