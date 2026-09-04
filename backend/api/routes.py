@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import text
 from sqlalchemy.orm import Session
 
@@ -109,7 +109,28 @@ def query_data(
     SQL, database results, and a business insight.
     """
 
-    return answer_question(
-        db=db,
-        question=request.question
-    )
+    question = request.question.strip()
+
+    if not question:
+        raise HTTPException(
+            status_code=400,
+            detail="Please enter a question."
+        )
+
+    try:
+        return answer_question(
+            db=db,
+            question=question
+        )
+
+    except ValueError as error:
+        raise HTTPException(
+            status_code=400,
+            detail=str(error)
+        )
+
+    except Exception:
+        raise HTTPException(
+            status_code=500,
+            detail="Unable to analyze the question right now. Please try again."
+        )

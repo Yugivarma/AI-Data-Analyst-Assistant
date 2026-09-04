@@ -443,3 +443,15 @@ tbody tr:hover td {
     font-size: 13px;
   }
 }
+
+.error {
+  margin-top: 16px;
+  padding: 12px 14px;
+  border: 1px solid #fecaca;
+  border-radius: 9px;
+  background: #fef2f2;
+  color: #b91c1c;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 500;
+}
