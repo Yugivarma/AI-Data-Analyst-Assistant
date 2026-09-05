@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Chart from "./components/Chart";
 
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
+
 function App() {
   const [question, setQuestion] = useState("");
   const [response, setResponse] = useState(null);
@@ -14,8 +17,7 @@ function App() {
   useEffect(() => {
     const checkHealth = async () => {
       try {
-        const result = await fetch("http://127.0.0.1:8000/health");
-
+        const result = await fetch(`${API_BASE_URL}/health`);
         if (!result.ok) {
           throw new Error("Health check failed.");
         }
@@ -50,7 +52,7 @@ function App() {
     setResponse(null);
 
     try {
-      const result = await fetch("http://127.0.0.1:8000/query", {
+      const result = await fetch(`${API_BASE_URL}/query`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
